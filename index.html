@@ -30,8 +30,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto" id="navbarLinks">
-                    <!-- Navbar links will be dynamically added here -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Static Navbar Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -50,22 +54,6 @@
             const response = await fetch('data.json');
             const jsonData = await response.json();
             return jsonData;
-        }
-
-        // Function to dynamically generate navbar links
-        function generateNavbarLinks(data) {
-            var navbarLinksContainer = document.getElementById("navbarLinks");
-
-            data.forEach(function (item) {
-                var navItem = document.createElement("li");
-                navItem.className = "nav-item";
-                var navLink = document.createElement("a");
-                navLink.className = "nav-link";
-                navLink.href = item.link;
-                navLink.textContent = item.title;
-                navItem.appendChild(navLink);
-                navbarLinksContainer.appendChild(navItem);
-            });
         }
 
         // Function to dynamically generate content cards
@@ -94,7 +82,6 @@
 
         // Call the functions to fetch JSON data and generate dynamic content
         fetchData().then(function (jsonData) {
-            generateNavbarLinks(jsonData);
             generateContentCards(jsonData);
         });
     </script>
